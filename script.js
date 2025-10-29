@@ -23,21 +23,22 @@ const newsData = [
 ];
 
 // ====== Tampilkan Berita ke Halaman ======
-const newsContainer = document.getElementById("news-container");
+$(document).ready(function() {
+  const container = $("#news-container");
+  container.empty(); // bersihin kontainer
 
-function loadNews() {
-  newsData.forEach((news) => {
-    const card = document.createElement("div");
-    card.className = "news-card";
-
-    card.innerHTML = `
-      <img src="${news.image}" alt="${news.title}">
-      <h3>${news.title}</h3>
-      <p>${news.description}</p>
+  newsData.forEach(news => {
+    const card = `
+      <div class="col-md-3 mb-4">
+        <div class="card h-100 shadow-sm">
+          <img src="${news.image}" class="card-img-top" alt="${news.title}">
+          <div class="card-body">
+            <h5 class="card-title">${news.title}</h5>
+            <p class="card-text">${news.description}</p>
+          </div>
+        </div>
+      </div>
     `;
-
-    newsContainer.appendChild(card);
-  });
-}
-
-document.addEventListener("DOMContentLoaded", loadNews);
+    container.append(card);
+  });
+});
