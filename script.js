@@ -1,45 +1,43 @@
-$(document).ready(function() {
-  // Data berita (kamu bisa ubah sesuai keinginan)
-  const berita = [
-    {
-      gambar: "https://picsum.photos/400/200?random=1",
-      judul: "Berita Nasional: Kebijakan Baru Pemerintah",
-      deskripsi: "Pemerintah resmi mengumumkan kebijakan baru yang bertujuan meningkatkan kualitas pendidikan nasional.",
-      link: "#"
-    },
-    {
-      gambar: "https://picsum.photos/400/200?random=2",
-      judul: "Teknologi AI di Indonesia",
-      deskripsi: "Perusahaan startup Indonesia mulai memanfaatkan kecerdasan buatan untuk meningkatkan produktivitas bisnis.",
-      link: "#"
-    },
-    {
-      gambar: "https://picsum.photos/400/200?random=3",
-      judul: "Olahraga: Liga Indonesia Makin Seru",
-      deskripsi: "Pertandingan sengit antara dua klub besar berakhir dramatis dengan skor imbang 2-2.",
-      link: "#"
-    },
-    {
-      gambar: "https://picsum.photos/400/200?random=4",
-      judul: "Hiburan: Film Lokal Tembus Box Office",
-      deskripsi: "Film karya anak bangsa berhasil menarik jutaan penonton dan mendapat penghargaan internasional.",
-      link: "#"
-    }
-  ];
+// ====== Data Berita ======
+const newsData = [
+  {
+    title: "Teknologi AI Kian Maju di Indonesia",
+    description: "Para pengembang lokal mulai memanfaatkan AI untuk pendidikan dan bisnis. Pemerintah pun mulai menyiapkan regulasi baru.",
+    image: "https://source.unsplash.com/600x400/?technology,ai"
+  },
+  {
+    title: "Timnas Indonesia Siap Hadapi Kualifikasi Piala Dunia",
+    description: "Pelatih timnas mengatakan para pemain dalam kondisi terbaik menjelang laga melawan Australia.",
+    image: "https://source.unsplash.com/600x400/?football,indonesia"
+  },
+  {
+    title: "Cuaca Ekstrem Landa Sejumlah Wilayah",
+    description: "BMKG memperingatkan potensi hujan lebat dan angin kencang di beberapa daerah pekan ini.",
+    image: "https://source.unsplash.com/600x400/?rain,storm"
+  },
+  {
+    title: "Startup Lokal Sukses Dapatkan Pendanaan Seri A",
+    description: "Startup e-commerce asal Bandung berhasil menggaet investor luar negeri senilai Rp50 miliar.",
+    image: "https://source.unsplash.com/600x400/?startup,business"
+  }
+];
 
-  // Menampilkan card berita ke halaman
-  berita.forEach(function(item) {
-    $('#news-container').append(`
-      <div class="col-md-3 mb-4">
-        <div class="card h-100 shadow-sm">
-          <img src="${item.gambar}" class="card-img-top" alt="Gambar Berita">
-          <div class="card-body">
-            <h5 class="card-title">${item.judul}</h5>
-            <p class="card-text">${item.deskripsi}</p>
-            <a href="${item.link}" class="btn btn-primary">Read More</a>
-          </div>
-        </div>
-      </div>
-    `);
-  });
-});
+// ====== Tampilkan Berita ke Halaman ======
+const newsContainer = document.getElementById("news-container");
+
+function loadNews() {
+  newsData.forEach((news) => {
+    const card = document.createElement("div");
+    card.className = "news-card";
+
+    card.innerHTML = `
+      <img src="${news.image}" alt="${news.title}">
+      <h3>${news.title}</h3>
+      <p>${news.description}</p>
+    `;
+
+    newsContainer.appendChild(card);
+  });
+}
+
+document.addEventListener("DOMContentLoaded", loadNews);
